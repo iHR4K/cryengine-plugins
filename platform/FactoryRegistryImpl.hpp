@@ -101,9 +101,6 @@ public:
 							m_FactoriesToInterfaceID.push_back(newFactory);
 						}
 
-						//for (size_t i = 0, s = m_callbacks.size(); i < s; ++i)
-						//	m_callbacks[i]->OnNotifyFactoryRegistered(pFactory);
-
 						++numFactoriesAdded;
 					}
 				}
@@ -186,25 +183,6 @@ private:
 		{
 			static void Report(Foundation::IFactory* pKnownFactory, Foundation::IFactory* pNewFactory)
 			{
-				//char err[1024];
-				//sprintf(err, "Conflicting factories...\n"
-				//	"Factory (0x%p): ClassID = %s, ClassName = \"%s\"\n"
-				//	"Factory (0x%p): ClassID = %s, ClassName = \"%s\"",
-				//	pKnownFactory, pKnownFactory ? pKnownFactory->GetClassID().ToString().c_str() : "$unknown$", pKnownFactory ? pKnownFactory->GetName() : "$unknown$",
-				//	pNewFactory, pNewFactory ? pNewFactory->GetClassID().ToString().c_str() : "$unknown$", pNewFactory ? pNewFactory->GetName() : "$unknown$");
-
-				//if CRY_PLATFORM_ORBIS || CRY_PLATFORM_APPLE || CRY_PLATFORM_LINUX || CRY_PLATFORM_ANDROID
-				//	printf("\n!!! Fatal error !!!\n");
-				//printf("%s", err);
-				//printf("\n");
-				//elif CRY_PLATFORM_WINDOWS
-				//	OutputDebugStringA("\n!!! Fatal error !!!\n");
-				//OutputDebugStringA(err);
-				//OutputDebugStringA("\n");
-				//CryMessageBox(err, "!!! Fatal error !!!", eMB_Error);
-				//endif
-
-				//	assert(0);
 				exit(0);
 			}
 		};
@@ -214,17 +192,9 @@ private:
 		auto itForCName = std::lower_bound(m_byName.begin(), m_byName.end(), searchByClassName);
 		auto itForCNameIsExist = itForCName != m_byName.end();
 
-		//if (itForCName != m_byName.end() && !(searchByCName < *itForCName))
-		//	FatalError::Report((*itForCName).m_ptr, pFactory);
-
 		FactoryToClassID searchByClassID{ pFactory->GetClassID(), pFactory };
 		auto itForCID = std::lower_bound(m_FactoriesToClassID.begin(), m_FactoriesToClassID.end(), searchByClassID);
 		auto itForCIDIsExist = itForCID != m_FactoriesToClassID.end();
-
-		//FactoryByCID searchByCID(pFactory);
-		//FactoriesByCIDIt itForCID = std::lower_bound(m_byCID.begin(), m_byCID.end(), searchByCID);
-		//if (itForCID != m_byCID.end() && !(searchByCID < *itForCID))
-		//	FatalError::Report((*itForCID).m_ptr, pFactory);
 
 		itPosForCName = itForCName;
 		itPosForCID = itForCID;
