@@ -30,8 +30,6 @@ extern "C"
 	}
 }
 
-// InitializeEngine call should be here too
-
 #define SystemLibraryName "platform.dll"
 
 bool InitializeEngine(Foundation::SystemInitializeParams& startupParams, bool externalMainLoop)
