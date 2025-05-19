@@ -7,7 +7,7 @@
 int main()
 {
 	Editor editor{ };
-	bool isSuccessfule = editor.Initialize();
+	bool isSuccessful = editor.Initialize();
 
 	return 0;
 }
